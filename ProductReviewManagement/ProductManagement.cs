@@ -48,5 +48,46 @@ namespace ProductReviewManagement
                 Console.WriteLine("ProductID: " + productReview.productID + "\tCount: " + productReview.count);
             }
         }
+        /// <summary>
+        /// UC 5:
+        /// Returns the product id and review of all the products
+        /// </summary>
+        /// <param name="list"></param>
+        public void RetrieveProductIDAndReview(List<ProductReview> list)
+        {
+            var recordedData = (from products in list
+                                select new { products.ProductID, products.Review });
+            foreach(var productReview in recordedData)
+            {
+                Console.WriteLine("Product ID: " + productReview.ProductID + "\tReviews: " + productReview.Review);
+            }
+        }
+        /// <summary>
+        /// UC 6:
+        /// Skips the top 5 entries from the list
+        /// </summary>
+        /// <param name="list"></param>
+        public void SkipTopFive(List<ProductReview> list)
+        {
+            var recordedData = (from products in list
+                                select products).Skip(5);
+            foreach (var productReview in recordedData)
+            {
+                Console.WriteLine("Product ID: " + productReview.ProductID + "User ID: " + productReview.UserID + "Rating: " + productReview.Rating + "Review: " + productReview.Review);
+            }
+        }
+        /// <summary>
+        /// UC 7:
+        /// Retrieves product id and reviews of all the products
+        /// </summary>
+        /// <param name="list"></param>
+        public void RetrieveProductIDAndReviewWithSelect(List<ProductReview> list)
+        {
+            var recordedData = list.Select(x => new { ProductID = x.ProductID, Review = x.Review });
+            foreach(var productReview in recordedData)
+            {
+                Console.WriteLine("Product ID: " + productReview.ProductID + " Review: " + productReview.Review);
+            }
+        }
     }
 }
