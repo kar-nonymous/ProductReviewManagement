@@ -68,6 +68,9 @@ namespace ProductReviewManagement
             /// Calling AverageRatingByProductID method from ProductManagementDataTable class
             Console.WriteLine("\nAverage ratings");
             productManagementDataTable.AverageRatingByProductID();
+            /// Calling RetrieveDataWithReview method from ProductManagementDataTable class
+            Console.WriteLine("Retrieving data with review condition");
+            productManagementDataTable.RetrieveDataWithReview();
         }
     }
 }

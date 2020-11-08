@@ -52,5 +52,19 @@ namespace ProductReviewManagement
                 Console.WriteLine("Product ID: " + productReview.ProductId + " Average: " + productReview.Average);
             }
         }
+        /// <summary>
+        /// UC 11:
+        /// Retrieve data from table by review condition
+        /// </summary>
+        public void RetrieveDataWithReview()
+        {
+            var recordedData = from products in productsTable.AsEnumerable()
+                               where products.Field<string>("Review") == "nice"
+                               select products;
+            foreach (var productReview in recordedData)
+            {
+                Console.WriteLine("Product ID: " + productReview.Field<string>("ProductID") + " UserID: " + productReview.Field<string>("UserID") + " Rating: " + productReview.Field<string>("Rating") + " Review: " + productReview.Field<string>("Review") + " isLike: " + productReview.Field<string>("isLike"));
+            }
+        }
     }
 }
