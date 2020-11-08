@@ -56,7 +56,7 @@ namespace ProductReviewManagement
         public void RetrieveProductIDAndReview(List<ProductReview> list)
         {
             var recordedData = (from products in list
-                                select new { ProductID = products.ProductID, Review = products.Review });
+                                select new { products.ProductID, products.Review });
             foreach(var productReview in recordedData)
             {
                 Console.WriteLine("Product ID: " + productReview.ProductID + "\tReviews: " + productReview.Review);
