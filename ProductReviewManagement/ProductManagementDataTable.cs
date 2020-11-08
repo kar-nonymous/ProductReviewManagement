@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Data;
+using System.Linq;
 
 namespace ProductReviewManagement
 {
@@ -37,6 +38,18 @@ namespace ProductReviewManagement
             foreach(var productReview in recordedData)
             {
                 Console.WriteLine("Product ID: " + productReview.Field<string>("ProductID") + " UserID: " + productReview.Field<string>("UserID") + " Rating: " + productReview.Field<string>("Rating") + " Review: " + productReview.Field<string>("Review") + " isLike: " + productReview.Field<string>("isLike"));
+            }
+        }
+        /// <summary>
+        /// UC 10: 
+        /// Average rating 
+        /// </summary>
+        public void AverageRatingByProductID()
+        {
+            var recordedData = productsTable.AsEnumerable().GroupBy(r => r.Field<string>("ProductId")).Select(x => new { ProductId = x.Key, Average = x.Average(r => r.Field<int>("Rating")) });
+            foreach(var productReview in recordedData)
+            {
+                Console.WriteLine("Product ID: " + productReview.ProductId + " Average: " + productReview.Average);
             }
         }
     }
