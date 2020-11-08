@@ -56,7 +56,7 @@ namespace ProductReviewManagement
         public void RetrieveProductIDAndReview(List<ProductReview> list)
         {
             var recordedData = (from products in list
-                                select new { ProductID = products.ProductID, Review = products.Review });
+                                select new { products.ProductID, products.Review });
             foreach(var productReview in recordedData)
             {
                 Console.WriteLine("Product ID: " + productReview.ProductID + "\tReviews: " + productReview.Review);
@@ -74,6 +74,19 @@ namespace ProductReviewManagement
             foreach (var productReview in recordedData)
             {
                 Console.WriteLine("Product ID: " + productReview.ProductID + "User ID: " + productReview.UserID + "Rating: " + productReview.Rating + "Review: " + productReview.Review);
+            }
+        }
+        /// <summary>
+        /// UC 7:
+        /// Retrieves product id and reviews of all the products
+        /// </summary>
+        /// <param name="list"></param>
+        public void RetrieveProductIDAndReviewWithSelect(List<ProductReview> list)
+        {
+            var recordedData = list.Select(x => new { ProductID = x.ProductID, Review = x.Review });
+            foreach(var productReview in recordedData)
+            {
+                Console.WriteLine("Product ID: " + productReview.ProductID + " Review: " + productReview.Review);
             }
         }
     }

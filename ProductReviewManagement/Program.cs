@@ -55,6 +55,9 @@ namespace ProductReviewManagement
             /// Calling the SkipTopFive method from ProductManagement class
             Console.WriteLine("\nSkipped the top 5 entries from the list");
             productManagement.SkipTopFive(productReviewList);
+            /// Calling the RetrieveProductIDAndReviewWithSelect method from ProductManagement class
+            Console.WriteLine("\nProduct ID and Review of every product using select");
+            productManagement.RetrieveProductIDAndReviewWithSelect(productReviewList);
         }
     }
 }
