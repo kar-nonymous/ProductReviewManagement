@@ -22,9 +22,12 @@ namespace ProductReviewManagement
             productsTable.Columns.Add("isLike");
             productsTable.Rows.Add("1", "15", "10", "Excellent", "true");
             productsTable.Rows.Add("2", "12", "1", "Poor", "true");
-            productsTable.Rows.Add("3", "21", "7", "Average", "false");
-            productsTable.Rows.Add("3", "22", "10", "Excellent", "true");
-            productsTable.Rows.Add("2", "21", "0", "Poor", "true");
+            productsTable.Rows.Add("3", "18", "7", "Average", "false");
+            productsTable.Rows.Add("3", "19", "10", "Excellent", "true");
+            productsTable.Rows.Add("2", "20", "0", "Poor", "true");
+            productsTable.Rows.Add("3", "10", "7", "Average", "false");
+            productsTable.Rows.Add("3", "10", "10", "Excellent", "true");
+            productsTable.Rows.Add("2", "10", "0", "Poor", "true");
         }
         /// <summary>
         /// UC 9:
@@ -60,6 +63,21 @@ namespace ProductReviewManagement
         {
             var recordedData = from products in productsTable.AsEnumerable()
                                where products.Field<string>("Review") == "nice"
+                               select products;
+            foreach (var productReview in recordedData)
+            {
+                Console.WriteLine("Product ID: " + productReview.Field<string>("ProductID") + " UserID: " + productReview.Field<string>("UserID") + " Rating: " + productReview.Field<string>("Rating") + " Review: " + productReview.Field<string>("Review") + " isLike: " + productReview.Field<string>("isLike"));
+            }
+        }
+        /// <summary>
+        /// UC 12:
+        /// Retrieve data from table by order id condition sorted with rating
+        /// </summary>
+        public void RetrieveDataWithUserID()
+        {
+            var recordedData = from products in productsTable.AsEnumerable()
+                               where products.Field<string>("UserID") == "10"
+                               orderby products.Field<string>("Rating") descending
                                select products;
             foreach (var productReview in recordedData)
             {
