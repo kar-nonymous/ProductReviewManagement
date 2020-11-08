@@ -41,7 +41,11 @@ namespace ProductReviewManagement
             };
             ProductManagement productManagement = new ProductManagement();
             ///Calling the TopThreeRecords method from ProductManagement class
+            Console.WriteLine("Top three records with highest rating");
             productManagement.TopThreeRecords(productReviewList);
+            /// Calling the RetrieveByCondition method from ProductManagement class
+            Console.WriteLine("Records with the provided conditions");
+            productManagement.RetrieveByCondition(productReviewList);
         }
     }
 }
