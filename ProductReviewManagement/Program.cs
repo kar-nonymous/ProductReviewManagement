@@ -40,6 +40,7 @@ namespace ProductReviewManagement
                 new ProductReview(){ProductID=25,UserID=2,Rating=1,Review="Average",isLike=true}
             };
             ProductManagement productManagement = new ProductManagement();
+            ProductManagementDataTable productManagementDataTable = new ProductManagementDataTable();
             ///Calling the TopThreeRecords method from ProductManagement class
             Console.WriteLine("\nTop three records with highest rating");
             productManagement.TopThreeRecords(productReviewList);
@@ -58,6 +59,12 @@ namespace ProductReviewManagement
             /// Calling the RetrieveProductIDAndReviewWithSelect method from ProductManagement class
             Console.WriteLine("\nProduct ID and Review of every product using select");
             productManagement.RetrieveProductIDAndReviewWithSelect(productReviewList);
+            /// Calling CreateDataTable method from ProductManagementDataTable class
+            Console.WriteLine("\nAdding data to data table....");
+            productManagementDataTable.CreateDataTable();
+            /// Calling RetrieveDataWithIsLike method from ProductManagementDataTable class
+            Console.WriteLine("\nRetrieving data with isLike condition");
+            productManagementDataTable.RetrieveDataWithIsLike();
         }
     }
 }
